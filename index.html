@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to binary</title>
+  <script src="js/snap.svg.min.js"></script>
+</head>
+<body style="background: grey;">
+
+
+<script type="text/javascript">
+  (function () {
+    var w, r, s, col;
+    w = 40;
+    r = w / 2
+    window.s = s = Snap(w*256, w*8);
+
+    s.rect(0, 0, w*256, w*8).attr({fill: "grey"})
+
+    one_at = function(x, y) {
+      s.path("M"+(x+w/2)+" "+y+" L"+(x)+" "+(y+w)+" L"+(x+w)+" "+(y+w)+" Z")
+      //s.path("M45 00 L30 30 L60 30 Z")
+      ////s.rect(x, y, w, w)
+      //.attr({
+      //    fill: "#bada55",
+      //    stroke: "#000",
+      //    strokeWidth: 0
+      //});
+
+      //s.circle(x+r, y+r, r)
+      //s.rect(x, y, w, w)
+      .attr({
+          fill: "#2f4fef",
+          stroke: "#000",
+          strokeWidth: 0
+      });
+
+    }
+
+    zero_at = function(x, y) {
+      s.path("M"+(x+(w/2))+" "+(y+w)+" L"+(x)+" "+(y)+" L"+(x+w)+" "+(y)+" Z")
+      //s.circle(x+r, y+r, r)
+      //s.rect(x, y, w, w)
+      .attr({
+          fill: "#5fef5f",
+          stroke: "#000",
+          strokeWidth: 0
+      });
+      // s.circle(x+r, y+r, r).attr({
+      //     fill: "#bada55",
+      //     stroke: "#000",
+      //     strokeWidth: 5
+      // });
+    }
+
+    for (var col = 0; col < 256; col++) {
+      x = (col) * w;
+      if (col & 128) one_at(x, 0);
+        else        zero_at(x, 0);
+      if (col & 64)  one_at(x, w);
+        else        zero_at(x, w);
+      if (col & 32)  one_at(x, w*2);
+        else        zero_at(x, w*2);
+      if (col & 16)  one_at(x, w*3);
+        else        zero_at(x, w*3);
+      if (col & 8)   one_at(x, w*4);
+        else        zero_at(x, w*4);
+      if (col & 4)   one_at(x, w*5);
+        else        zero_at(x, w*5);
+      if (col & 2)   one_at(x, w*6);
+        else        zero_at(x, w*6);
+      if (col & 1)   one_at(x, w*7);
+        else        zero_at(x, w*7);
+    }
+  })()
+
+</script>
+</body>
+</html>
